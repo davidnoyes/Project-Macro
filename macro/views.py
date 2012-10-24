@@ -6,7 +6,7 @@ def index(request):
 
     context = {
         'top_bar_colour': 'transparent', #blue, black, transparent
-        'page_title': 'Main page',
+        'page_title': 'Project: Macro',
         
         #'left_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'isHome':True},{'text':'Google', 'url':'http://www.google.com'}],
         #'right_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'isHome':True},{'text':'Google', 'url':'http://www.google.com'}],
@@ -20,6 +20,15 @@ def index(request):
         #'duo_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
         #'tri_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
         
-
+        'right_button': {'text':'Settings', 'url':'/macro/settings'},
     }
     return render(request, 'macro/index.html', context)
+
+def settings(request):
+    context = {
+        'top_bar_colour': 'transparent',
+        'page_title': 'Settings',
+        
+        'left_arrow_button': [{'url':'/macro', 'isHome':True},]
+    }
+    return render(request, 'macro/settings.html', context)
