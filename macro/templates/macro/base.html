@@ -12,18 +12,48 @@
         <link href="static/images/raspberrypythonsplash.png" rel="apple-touch-startup-image" />
     </head>
 <body>
-    <div id="topbar" class="black">
+    <div id="topbar" class="{{ top_bar_colour }}">
         <div id="title">{{ page_title }}</div>
-
-        {% if previous_button %}
-            <div id="leftnav"><a href="{{previous_button.url}}">{{previous_button.text}}</a> </div>
+        
+        {% if left_arrow_button or right_arrow_button %}
+        {% if left_arrow_button %}
+        <div id="leftnav">
+            {% for button in left_arrow_button %}
+            <a href="{{button.url}}">{{button.text}}</a> 
+            {% endfor %}
+        </div>
         {% endif %}
 
-        {% if next_button %}
-            <div id="rightnav"><a href="{{next_button.url}}">{{next_button.text}}</a> </div>
+        {% if right_arrow_button %}
+        <div id="rightnav">
+            {% for button in right_arrow_button %}
+            <a href="{{button.url}}">{{button.text}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% elif left_button or right_button %}
+        
+        {% if left_button %}
+            <div id="{% if left_button.blue %}blue{% endif %}leftbutton"><a href="{{left_button.url}}">{{left_button.text}}</a> </div>
+        {% endif %}
+
+        {% if right_button %}
+            <div id="{% if right_button.blue %}blue{% endif %}rightbutton"><a href="{{right_button.url}}">{{right_button.text}}</a> </div>
+        {% endif %}
+        
+        {% elif duo_selection_buttons %}
+            <div id="duoselectionbuttons">{% for button in duo_selection_buttons %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div>
+            
+        {% elif tri_selection_buttons %}
+            <div id="triselectionbuttons">{% for button in tri_selection_buttons %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div>
         {% endif %}
         
     </div>
+    {% if duo_button %}
+    <div id="duobutton"><div class="links">{% for button in duo_button %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div></div>
+    {% elif tri_button %}
+    <div id="tributton"><div class="links">{% for button in tri_button %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div></div>
+    {% endif %}
     <div id="content">
         {% block content %}{%endblock %}
     </div>

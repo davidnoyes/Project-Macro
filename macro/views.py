@@ -3,12 +3,21 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 
 def index(request):
-    previous_button = {'text':'Yahoo', 'url':'http://www.yahoo.com'}
-    next_button = {'text':'Google', 'url':'http://www.google.com'}
 
     context = {
+        'top_bar_colour': 'transparent', #blue, black, transparent
         'page_title': 'Main page',
-        'previous_button': previous_button,
-        'next_button': next_button,
+        
+        #'left_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com'},{'text':'Google', 'url':'http://www.google.com'}],
+        #'right_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com'},{'text':'Google', 'url':'http://www.google.com'}],
+        
+        #'left_button':{'text':'Google', 'url':'http://www.google.com','blue':False},
+        #'right_button': {'text':'Google', 'url':'http://www.google.com','blue':False},
+        
+        #'duo_selection_buttons': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
+        #'tri_selection_buttons': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False},{'text':'Bing', 'url':'http://www.bing.com', 'active':False}],
+        
+        #'duo_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
+        #'tri_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
     }
     return render(request, 'macro/index.html', context)
