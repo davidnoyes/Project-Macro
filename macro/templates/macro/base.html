@@ -19,7 +19,7 @@
         {% if left_arrow_button %}
         <div id="leftnav">
             {% for button in left_arrow_button %}
-            <a href="{{button.url}}">{{button.text}}</a> 
+            <a href="{{button.url}}">{% if button.isHome %}<img alt="home" src="/static/images/home.png" />{% else %}{{button.text}}{% endif %}</a>
             {% endfor %}
         </div>
         {% endif %}
@@ -27,7 +27,7 @@
         {% if right_arrow_button %}
         <div id="rightnav">
             {% for button in right_arrow_button %}
-            <a href="{{button.url}}">{{button.text}}</a>
+            <a href="{{button.url}}">{% if button.isHome %}<img alt="home" src="/static/images/home.png" />{% else %}{{button.text}}{% endif %}</a>
             {% endfor %}
         </div>
         {% endif %}
@@ -47,7 +47,7 @@
         {% elif tri_selection_buttons %}
             <div id="triselectionbuttons">{% for button in tri_selection_buttons %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div>
         {% endif %}
-        
+                
     </div>
     {% if duo_button %}
     <div id="duobutton"><div class="links">{% for button in duo_button %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div></div>

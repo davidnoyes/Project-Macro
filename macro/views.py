@@ -8,8 +8,8 @@ def index(request):
         'top_bar_colour': 'transparent', #blue, black, transparent
         'page_title': 'Main page',
         
-        #'left_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com'},{'text':'Google', 'url':'http://www.google.com'}],
-        #'right_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com'},{'text':'Google', 'url':'http://www.google.com'}],
+        #'left_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'isHome':True},{'text':'Google', 'url':'http://www.google.com'}],
+        #'right_arrow_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'isHome':True},{'text':'Google', 'url':'http://www.google.com'}],
         
         #'left_button':{'text':'Google', 'url':'http://www.google.com','blue':False},
         #'right_button': {'text':'Google', 'url':'http://www.google.com','blue':False},
@@ -19,5 +19,7 @@ def index(request):
         
         #'duo_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
         #'tri_button': [{'text':'Yahoo', 'url':'http://www.yahoo.com', 'active': True},{'text':'Google', 'url':'http://www.google.com', 'active':False}],
+        
+
     }
     return render(request, 'macro/index.html', context)
