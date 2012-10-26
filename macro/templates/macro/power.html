@@ -1,0 +1,21 @@
+{% extends "macro/iWebKit.html" %}
+
+{% block body_scripts %}
+    {{block.super}}
+    <script src="/static/javascript/power.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <form method="post">
+        {% csrf_token %}
+        <ul class="pageitem">
+            <li class="checkbox">
+                <span class="name">Power </span>
+		<input id="cb_power" name="power" type="checkbox" {% if not power_off %}value="on" checked="checked"{% else %}value="off" disabled="disabled"{% endif %}>
+                <input name="checkbox_trigger_power" id="cbt_power" value="" type="hidden" />
+            </li>
+        </ul>
+	{% if power_off %}<span class="graytitle">Powering down...</span>{% endif %}
+    </form>
+{% endblock %}

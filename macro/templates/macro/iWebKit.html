@@ -1,0 +1,58 @@
+{% extends "macro/base.html" %}
+
+{% block head_styles %}
+    {{block.super}}
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block head_script %}
+    {{block.super}}
+    <script src="/static/javascript/functions.js" type="text/javascript"></script>
+{% endblock %}
+        
+{% block body %}
+    <div id="topbar" class="{{ top_bar_colour }}">
+        <div id="title">{{ page_title }}</div>
+        
+        {% if left_arrow_button %}
+        <div id="leftnav">
+            {% for button in left_arrow_button %}
+            <a href="{{button.url}}">{% if button.isHome %}<img alt="home" src="/static/images/home.png" />{% else %}{{button.text}}{% endif %}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if right_arrow_button %}
+        <div id="rightnav">
+            {% for button in right_arrow_button %}
+            <a href="{{button.url}}">{% if button.isHome %}<img alt="home" src="/static/images/home.png" />{% else %}{{button.text}}{% endif %}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if left_button %}
+            <div id="{% if left_button.blue %}blue{% endif %}leftbutton"><a href="{{left_button.url}}">{{left_button.text}}</a> </div>
+        {% endif %}
+
+        {% if right_button %}
+            <div id="{% if right_button.blue %}blue{% endif %}rightbutton"><a href="{{right_button.url}}">{{right_button.text}}</a> </div>
+        {% endif %}
+        
+        {% if duo_selection_buttons %}
+            <div id="duoselectionbuttons">{% for button in duo_selection_buttons %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div>
+        {% endif %}
+            
+        {% if tri_selection_buttons %}
+            <div id="triselectionbuttons">{% for button in tri_selection_buttons %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div>
+        {% endif %}
+                
+    </div>
+    {% if duo_button %}
+    <div id="duobutton"><div class="links">{% for button in duo_button %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div></div>
+    {% elif tri_button %}
+    <div id="tributton"><div class="links">{% for button in tri_button %}<a {% if button.active %}id='pressed'{% endif %} href="{{button.url}}">{{button.text}}</a>{% endfor %}</div></div>
+    {% endif %}
+    <div id="content">
+        {% block content %}{%endblock %}
+    </div>
+{% endblock %}
