@@ -6,6 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', redirect_to, {'url': '/macro'}),
     url(r'^macro/', include('macro.urls')),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
