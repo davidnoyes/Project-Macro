@@ -7,7 +7,20 @@ $(document).ready(function(event){
         else{
             $("#cbt_power").val('off');
             $("#cb_power").attr("disabled", "disabled");
-            $(this).closest("form").submit();
+            //$(this).closest("form").submit();
+            $.ajax({
+                url: '/macro/settings/power/',
+                type: 'POST',
+                data: {
+                    command : "off",
+                    csrfmiddlewaretoken: token,
+                },
+                success: function (ret)
+                {
+                    $('#status').html(ret).removeClass('hidden');
+                    
+                }
+            });
         }
     });
 
